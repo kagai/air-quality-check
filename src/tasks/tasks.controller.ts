@@ -17,6 +17,11 @@ export class TasksController {
     return this.tasksService.findAll();
   }
 
+  @Get('/concentrated_time')
+  findConcentratedTime() {
+    return this.tasksService.findPollutionConcentration();
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.tasksService.findOne(+id);

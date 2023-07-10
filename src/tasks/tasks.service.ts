@@ -27,10 +27,12 @@ export class TasksService {
     const task = new Task();
 
     try {
-      const response = await this.appService.getAirQualityNearestCity(lat, lon, process.env.AIR_QUALITY_API_KEY);
+      const response: any = await this.appService.getAirQualityNearestCity(lat, lon, process.env.AIR_QUALITY_API_KEY);
 
       this.logger.debug(`handleCron response: ${JSON.stringify(response)}`);
       const pollutionData = response;
+
+      this.logger.debug(`handleCron pollutionData: ${JSON.stringify(pollutionData)}`);
 
       task.ts = new Date(pollutionData.ts);
       task.aqius = pollutionData.aqius;
